@@ -39,8 +39,13 @@ def isLocked(path):
         return True
     return False
 
+def makeFacesFolder():
+    if not os.path.isdir("faces"):
+        os.makedirs("faces")
+
 def lockFolder():
     global filename
+    makeFacesFolder()
     picName = filename.replace("/", " ").replace(":", "_")
     print(picName)
     encodings1 = []
@@ -60,6 +65,7 @@ def lockFolder():
 
 def unlockFolder():
     global filename, lock
+    makeFacesFolder()
     picName = filename.replace("/", " ").replace(":", "_") + "(1)"
     encodings2 = []
     while len(encodings2) == 0:
@@ -102,7 +108,7 @@ def browseFiles():
 
 
 window = Tk()
-window.title('File Explorer')
+window.title('FaceLock')
 window.geometry("400x200")
 window.config(background="white")
 label_file_explorer = Label(window,
