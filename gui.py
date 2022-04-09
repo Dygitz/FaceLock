@@ -44,7 +44,7 @@ def makeFacesFolder():
         os.makedirs("faces")
 
 def lockFolder():
-    global filename
+    global filename, unlock
     makeFacesFolder()
     picName = filename.replace("/", " ").replace(":", "_")
     print(picName)
@@ -59,7 +59,6 @@ def lockFolder():
 
     os.system("echo y|cacls " + filename + " /P everyone:n")
     lock.destroy()
-    global unlock
     unlock = Button(window, text="Unlock", command=unlockFolder)
     unlock.place(relx=0.5, rely=0.65, anchor=CENTER)
 
